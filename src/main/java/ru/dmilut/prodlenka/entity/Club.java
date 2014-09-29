@@ -1,13 +1,16 @@
 package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -25,29 +28,34 @@ public class Club {
 	@NotEmpty
 	@Size(min = 2, max = 50)
 	private String name;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	
+
 	@NotEmpty
 	@Size(max = 200)
 	private String description;
-	
-	@NotNull	
-	private User user;
-	
+
 	@NotNull
-	private ContactInfo contactInfo;	
-		
+	@ManyToMany(mappedBy = "clubs")
+	private Set<User> users;
+
 	@NotNull
-	private Address address;
+	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	private Set<Address> addresses;
+
+	@NotNull
+	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	private Set<ContactInfo> contactInfos;
+
+	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	private Set<Unit> units;
+
+	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	private Set<Comment> comments;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration = new Date();
-
-	private List<Unit> units;
-	
-	private List<Comment> comments;
 
 	public Long getId() {
 		return id;
@@ -81,28 +89,44 @@ public class Club {
 		this.description = description;
 	}
 
-	public User getUser() {
-		return user;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
-	public ContactInfo getContactInfo() {
-		return contactInfo;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setContactInfo(ContactInfo contactInfo) {
-		this.contactInfo = contactInfo;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Set<ContactInfo> getContactInfos() {
+		return contactInfos;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setContactInfos(Set<ContactInfo> contactInfos) {
+		this.contactInfos = contactInfos;
+	}
+
+	public Set<Unit> getUnits() {
+		return units;
+	}
+
+	public void setUnits(Set<Unit> units) {
+		this.units = units;
+	}
+
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public Date getDateOfRegistration() {
@@ -113,20 +137,4 @@ public class Club {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
-	public List<Unit> getUnits() {
-		return units;
-	}
-
-	public void setUnits(List<Unit> units) {
-		this.units = units;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-	
 }

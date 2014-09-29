@@ -2,13 +2,18 @@ package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,10 +51,21 @@ public class User {
 	private String password;
 
 	@Enumerated(EnumType.STRING)
-	private List<Role> roles;
-	
+	private Role role;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration = new Date();
+
+	@ManyToMany
+	@JoinTable
+	private Set<Club> clubs;
+
+	@ManyToMany
+	@JoinTable
+	private Set<Unit> units;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Comment> comments;
 
 	public Long getId() {
 		return id;
@@ -99,20 +115,44 @@ public class User {
 		this.password = password;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
-	public Date getPublishingDate() {
+	public Date getDateOfRegistration() {
 		return dateOfRegistration;
 	}
 
-	public void setPublishingDate(Date dateOfRegistration) {
+	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
+	}
+
+	public Set<Club> getClubs() {
+		return clubs;
+	}
+
+	public void setClubs(Set<Club> clubs) {
+		this.clubs = clubs;
+	}
+
+	public Set<Unit> getUnits() {
+		return units;
+	}
+
+	public void setUnits(Set<Unit> units) {
+		this.units = units;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 }

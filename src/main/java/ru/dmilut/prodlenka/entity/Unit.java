@@ -1,42 +1,59 @@
 package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Unit {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@ManyToOne
+	@JoinColumn(name = "club_id")
+	private Club club;
+
 	@NotEmpty
 	@Size(min = 2, max = 30)
 	private String activity;
-	
-	private List<Teacher> teachers;
-	
-	private ContactInfo contactInfo;
-	
-	private Address address;
-	
-	private Schedule schedule;
-	
-	private List<User> users;
-	
+
+	@NotNull
+	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	private Set<Teacher> teachers;
+
+	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	private Set<ContactInfo> contactInfos;
+
+	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	private Set<Address> addresses;
+
+	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	private Set<Schedule> schedules;
+
+	@ManyToMany(mappedBy = "units")
+	private Set<User> users;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new Date();
-	
-	private List<Comment> comments;
+
+	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	private Set<Comment> comments;
 
 	public Long getId() {
 		return id;
@@ -44,6 +61,14 @@ public class Unit {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
 	}
 
 	public String getActivity() {
@@ -54,43 +79,43 @@ public class Unit {
 		this.activity = activity;
 	}
 
-	public List<Teacher> getTeachers() {
+	public Set<Teacher> getTeachers() {
 		return teachers;
 	}
 
-	public void setTeachers(List<Teacher> teachers) {
+	public void setTeachers(Set<Teacher> teachers) {
 		this.teachers = teachers;
 	}
 
-	public ContactInfo getContactInfo() {
-		return contactInfo;
+	public Set<ContactInfo> getContactInfos() {
+		return contactInfos;
 	}
 
-	public void setContactInfo(ContactInfo contactInfo) {
-		this.contactInfo = contactInfo;
+	public void setContactInfos(Set<ContactInfo> contactInfos) {
+		this.contactInfos = contactInfos;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 
-	public Schedule getSchedule() {
-		return schedule;
+	public Set<Schedule> getSchedules() {
+		return schedules;
 	}
 
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
+	public void setSchedules(Set<Schedule> schedules) {
+		this.schedules = schedules;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
@@ -102,11 +127,11 @@ public class Unit {
 		this.date = date;
 	}
 
-	public List<Comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 

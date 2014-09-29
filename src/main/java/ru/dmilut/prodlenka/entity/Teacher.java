@@ -4,17 +4,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Teacher {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Column(name = "first_name")
 	@NotEmpty
 	@Size(min = 2, max = 20)
@@ -24,9 +26,13 @@ public class Teacher {
 	@NotEmpty
 	@Size(min = 2, max = 20)
 	private String lastName;
-	
+
 	@Size(max = 60)
 	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "unit_id")
+	private Unit unit;
 
 	public Long getId() {
 		return id;
@@ -58,6 +64,14 @@ public class Teacher {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
 
 }

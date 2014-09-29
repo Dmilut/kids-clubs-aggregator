@@ -1,34 +1,50 @@
 package ru.dmilut.prodlenka.entity;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
+@Table(name = "contact_info")
 public class ContactInfo {
 
 	@Id
-	@GeneratedValue	
+	@GeneratedValue
+	@Column(name = "contact_person_id")
 	private Long id;
-	
+
+	@Column(name = "contact_person")
 	@Size(max = 50)
-	private String contactPerson; 
-	
-	@NotNull
-	private List <Phone> phones;	
-	
+	private String contactPerson;
+
+	@OneToMany(mappedBy = "contactInfo", cascade = CascadeType.ALL)
+	private Set<Phone> phones;
+
 	@Email
 	private String email;
-	
+
 	@URL
 	private String url;
+
+	@ManyToOne
+	@JoinColumn(name = "club_id")
+	private Club club;
+
+	@ManyToOne
+	@JoinColumn(name = "unit_id")
+	private Unit unit;
 
 	public Long getId() {
 		return id;
@@ -46,11 +62,11 @@ public class ContactInfo {
 		this.contactPerson = contactPerson;
 	}
 
-	public List<Phone> getPhones() {
+	public Set<Phone> getPhones() {
 		return phones;
 	}
 
-	public void setPhones(List<Phone> phones) {
+	public void setPhones(Set<Phone> phones) {
 		this.phones = phones;
 	}
 
@@ -69,5 +85,20 @@ public class ContactInfo {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
 }
