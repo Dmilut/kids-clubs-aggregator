@@ -5,8 +5,15 @@
 	version="2.1">
 	<persistence-unit name="ru.dmilut.prodlenka.persistence.unit">
 		
-		<class>ru.dmilut.prodlenka.entity.ContactInfo</class>
+		<class>ru.dmilut.prodlenka.entity.Address</class>
 		<class>ru.dmilut.prodlenka.entity.Club</class>
+		<class>ru.dmilut.prodlenka.entity.Comment</class>
+		<class>ru.dmilut.prodlenka.entity.ContactInfo</class>
+		<class>ru.dmilut.prodlenka.entity.Phone</class>
+		<class>ru.dmilut.prodlenka.entity.Role</class>
+		<class>ru.dmilut.prodlenka.entity.Schedule</class>
+		<class>ru.dmilut.prodlenka.entity.Teacher</class>
+		<class>ru.dmilut.prodlenka.entity.Unit</class>
 		<class>ru.dmilut.prodlenka.entity.User</class>
 	</persistence-unit>
 </persistence>

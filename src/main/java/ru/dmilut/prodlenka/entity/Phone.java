@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -17,10 +18,11 @@ public class Phone {
 	private Long id;
 
 	@NotEmpty
-	@Size(min = 2, max = 12)
-	private Integer number;
+	@Size(min = 2, max = 14)
+	private String number;
 
 	@ManyToOne
+	@NotNull
 	@JoinColumn(name = "contact_info_id")
 	private ContactInfo contactInfo;
 
@@ -32,11 +34,11 @@ public class Phone {
 		this.id = id;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

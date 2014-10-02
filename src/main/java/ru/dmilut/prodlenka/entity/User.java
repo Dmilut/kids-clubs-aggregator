@@ -7,8 +7,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -50,10 +48,13 @@ public class User {
 	@NotEmpty
 	private String password;
 
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	@NotEmpty
+	@ManyToMany
+	@JoinTable
+	private Set<Role> roles;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
 	@ManyToMany
@@ -115,12 +116,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Role getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public Date getDateOfRegistration() {

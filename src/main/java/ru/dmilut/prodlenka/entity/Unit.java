@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -33,7 +33,6 @@ public class Unit {
 	@Size(min = 2, max = 30)
 	private String activity;
 
-	@NotNull
 	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
 	private Set<Teacher> teachers;
 
@@ -50,7 +49,8 @@ public class Unit {
 	private Set<User> users;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new Date();
+	@Column(name = "date_registration")
+	private Date dateOfRegistration = new Date();
 
 	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
 	private Set<Comment> comments;
@@ -119,12 +119,12 @@ public class Unit {
 		this.users = users;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateOfRegistration() {
+		return dateOfRegistration;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateOfRegistration(Date dateOfRegistration) {
+		this.dateOfRegistration = dateOfRegistration;
 	}
 
 	public Set<Comment> getComments() {

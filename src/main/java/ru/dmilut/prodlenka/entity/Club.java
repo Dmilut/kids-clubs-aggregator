@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -55,6 +56,7 @@ public class Club {
 	private Set<Comment> comments;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
 	public Long getId() {
