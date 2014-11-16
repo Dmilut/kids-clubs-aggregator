@@ -9,8 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -48,25 +50,24 @@ public class User {
 	@NotEmpty
 	private String password;
 
-	@NotEmpty
-	@ManyToMany
-	@JoinTable
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "roles_id") })
 	private Set<Role> roles;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
-	@ManyToMany
-	@JoinTable
-	private Set<Club> clubs;
-
-	@ManyToMany
-	@JoinTable
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "units_id") })
 	private Set<Unit> units;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
+
+	@ManyToOne
+	@JoinColumn(name = "companies_id")
+	private Company company;
 
 	public Long getId() {
 		return id;
@@ -132,14 +133,6 @@ public class User {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
-	public Set<Club> getClubs() {
-		return clubs;
-	}
-
-	public void setClubs(Set<Club> clubs) {
-		this.clubs = clubs;
-	}
-
 	public Set<Unit> getUnits() {
 		return units;
 	}
@@ -154,6 +147,14 @@ public class User {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 }

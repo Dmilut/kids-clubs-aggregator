@@ -5,22 +5,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
+@Table(name = "addresses")
 public class Address {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@NotEmpty
 	@Size(min = 2, max = 30)
 	private String city;
 
-	@NotEmpty
 	@Size(min = 2, max = 50)
 	private String street;
 
@@ -31,11 +29,11 @@ public class Address {
 	private String apartment;
 
 	@ManyToOne
-	@JoinColumn(name = "club_id")
+	@JoinColumn(name = "clubs_id")
 	private Club club;
 
 	@ManyToOne
-	@JoinColumn(name = "unit_id")
+	@JoinColumn(name = "units_id")
 	private Unit unit;
 
 	public Long getId() {

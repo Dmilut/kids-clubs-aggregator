@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Schedules")
 public class Schedule {
 
 	@Id
@@ -14,7 +16,7 @@ public class Schedule {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "unit_id")
+	@JoinColumn(name = "units_id")
 	private Unit unit;
 
 	public Long getId() {
@@ -32,4 +34,5 @@ public class Schedule {
 	public void setUnit(Unit unit) {
 		this.unit = unit;
 	}
+
 }

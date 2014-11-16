@@ -5,12 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "phones")
 public class Phone {
 
 	@Id
@@ -22,7 +23,6 @@ public class Phone {
 	private String number;
 
 	@ManyToOne
-	@NotNull
 	@JoinColumn(name = "contact_info_id")
 	private ContactInfo contactInfo;
 

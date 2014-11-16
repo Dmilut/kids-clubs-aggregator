@@ -7,36 +7,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private User user;
 
-	@NotEmpty
 	private String text;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new Date();
+	private Date datePosted = new Date();
 
 	@ManyToOne
-	@JoinColumn(name = "club_id")
+	@JoinColumn(name = "clubs_id")
 	private Club club;
 
 	@ManyToOne
-	@JoinColumn(name = "unit_id")
+	@JoinColumn(name = "units_id")
 	private Unit unit;
 
 	public Long getId() {
@@ -63,12 +60,12 @@ public class Comment {
 		this.text = text;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDatePosted() {
+		return datePosted;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatePosted(Date datePosted) {
+		this.datePosted = datePosted;
 	}
 
 	public Club getClub() {

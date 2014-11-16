@@ -5,19 +5,19 @@
 
 <h1>${user.firstName}</h1>
 
-<c:forEach items="${user.clubs}" var="club">
-	<h1>${club.name}</h1>
-	<p>${club.description}</p>
+<c:forEach items="${user.units}" var="unit">
+	<h1>${unit.club.name}</h1>
+	<p>${unit.activity}</p>
 
-	<table>
+	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
-				<th>City</th>
-				<th>Street</th>
+				<th>Address</th>
+				<th>Contact Info</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${club.addresses}" var="address">
+			<c:forEach items="${unit.addresses}" var="address">
 				<tr>
 					<td>${address.city}</td>
 					<td>${address.street}</td>

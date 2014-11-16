@@ -8,6 +8,7 @@
 		<class>ru.dmilut.prodlenka.entity.Address</class>
 		<class>ru.dmilut.prodlenka.entity.Club</class>
 		<class>ru.dmilut.prodlenka.entity.Comment</class>
+		<class>ru.dmilut.prodlenka.entity.Company</class>
 		<class>ru.dmilut.prodlenka.entity.ContactInfo</class>
 		<class>ru.dmilut.prodlenka.entity.Phone</class>
 		<class>ru.dmilut.prodlenka.entity.Role</class>

@@ -2,10 +2,8 @@ package ru.dmilut.prodlenka.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,7 +28,7 @@ public class ContactInfo {
 	@Size(max = 50)
 	private String contactPerson;
 
-	@OneToMany(mappedBy = "contactInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "contactInfo")
 	private Set<Phone> phones;
 
 	@Email
@@ -40,11 +38,11 @@ public class ContactInfo {
 	private String url;
 
 	@ManyToOne
-	@JoinColumn(name = "club_id")
+	@JoinColumn(name = "clubs_id")
 	private Club club;
 
 	@ManyToOne
-	@JoinColumn(name = "unit_id")
+	@JoinColumn(name = "units_id")
 	private Unit unit;
 
 	public Long getId() {
@@ -102,4 +100,5 @@ public class ContactInfo {
 	public void setUnit(Unit unit) {
 		this.unit = unit;
 	}
+
 }

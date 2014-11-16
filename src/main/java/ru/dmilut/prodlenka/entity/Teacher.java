@@ -1,16 +1,19 @@
 package ru.dmilut.prodlenka.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "teachers")
 public class Teacher {
 
 	@Id
@@ -30,9 +33,8 @@ public class Teacher {
 	@Size(max = 60)
 	private String description;
 
-	@ManyToOne
-	@JoinColumn(name = "unit_id")
-	private Unit unit;
+	@ManyToMany(mappedBy = "teachers")
+	private Set<Unit> units;
 
 	public Long getId() {
 		return id;
@@ -66,12 +68,12 @@ public class Teacher {
 		this.description = description;
 	}
 
-	public Unit getUnit() {
-		return unit;
+	public Set<Unit> getUnits() {
+		return units;
 	}
 
-	public void setUnit(Unit unit) {
-		this.unit = unit;
+	public void setUnits(Set<Unit> units) {
+		this.units = units;
 	}
 
 }

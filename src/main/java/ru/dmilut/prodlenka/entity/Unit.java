@@ -4,55 +4,54 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "units")
 public class Unit {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "club_id")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "clubs_id")
 	private Club club;
 
 	@NotEmpty
 	@Size(min = 2, max = 30)
 	private String activity;
 
-	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "units_teachers", joinColumns = { @JoinColumn(name = "units_id") }, inverseJoinColumns = { @JoinColumn(name = "teachers_id") })
 	private Set<Teacher> teachers;
 
-	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "unit")
 	private Set<ContactInfo> contactInfos;
 
-	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "unit")
 	private Set<Address> addresses;
 
-	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "unit")
 	private Set<Schedule> schedules;
 
 	@ManyToMany(mappedBy = "units")
 	private Set<User> users;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
-	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "unit")
 	private Set<Comment> comments;
 
 	public Long getId() {

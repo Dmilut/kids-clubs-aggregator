@@ -3,60 +3,50 @@ package ru.dmilut.prodlenka.entity;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Table(name = "clubs")
 public class Club {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@NotEmpty
-	@Size(min = 2, max = 50)
 	private String name;
 
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
-	@NotEmpty
-	@Size(max = 200)
 	private String description;
 
-	@NotNull
-	@ManyToMany(mappedBy = "clubs")
-	private Set<User> users;
-
-	@NotNull
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "club")
 	private Set<Address> addresses;
 
-	@NotNull
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "club")
 	private Set<ContactInfo> contactInfos;
 
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "club")
 	private Set<Unit> units;
 
-	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name = "companies_id")
+	private Company company;
+
+	@OneToMany(mappedBy = "club")
 	private Set<Comment> comments;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
 	public Long getId() {
@@ -91,14 +81,6 @@ public class Club {
 		this.description = description;
 	}
 
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-
 	public Set<Address> getAddresses() {
 		return addresses;
 	}
@@ -121,6 +103,14 @@ public class Club {
 
 	public void setUnits(Set<Unit> units) {
 		this.units = units;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 	public Set<Comment> getComments() {
