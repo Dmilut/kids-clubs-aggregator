@@ -6,4 +6,6 @@ import ru.dmilut.prodlenka.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+	/*Set<Role> findByUsers*/
+
 }

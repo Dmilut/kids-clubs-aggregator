@@ -102,60 +102,6 @@ public class InitDbService {
 		unitRepository.save(unit);
 		clubRepository.save(club);
 
-		/*
-		 * Set<Club> clubs = new HashSet<Club>(); Club club = new Club();
-		 * club.setName("testClub"); club.setType(Type.MARTIAL_ARTS);
-		 * club.setDescription("testDescription"); club.setUsers(users);
-		 * 
-		 * Set<Address> addresses1 = new HashSet<Address>(); Address address1 =
-		 * new Address(); address1.setCity("testCity1");
-		 * address1.setStreet("testStreet1"); address1.setHome("testHome1");
-		 * address1.setApartment("testApart1");
-		 * addressRepository.save(address1);
-		 * 
-		 * Set<Address> addresses2 = new HashSet<Address>(); Address address2 =
-		 * new Address(); address2.setCity("testCity2");
-		 * address2.setStreet("testStreet2"); address2.setHome("testHome2");
-		 * address2.setApartment("testApart2");
-		 * 
-		 * Set<Unit> units = new HashSet<Unit>(); Unit unit = new Unit();
-		 * unit.setActivity("testActivity"); unit.setClub(club);
-		 * unit.setAddresses(addresses1);
-		 * 
-		 * Set<ContactInfo> contactInfos = new HashSet<ContactInfo>();
-		 * ContactInfo contactInfo = new ContactInfo();
-		 * contactInfo.setContactPerson("testContactPerson");
-		 * contactInfo.setEmail("testContactInfoEmail@test.ru");
-		 * contactInfo.setUrl("http://www.google.com");
-		 * 
-		 * Set<Phone> phones = new HashSet<Phone>(); Phone phone = new Phone();
-		 * phone.setNumber("12345678910"); phone.setContactInfo(contactInfo);
-		 * 
-		 * address1.setUnit(unit); addresses1.add(address1);
-		 * 
-		 * address2.setClub(club); addresses2.add(address2);
-		 * 
-		 * phones.add(phone);
-		 * 
-		 * contactInfo.setPhones(phones); contactInfos.add(contactInfo);
-		 * 
-		 * unit.setContactInfos(contactInfos); units.add(unit);
-		 * 
-		 * club.setAddresses(addresses1); club.setUnits(units);
-		 * club.setContactInfos(contactInfos); clubs.add(club);
-		 * 
-		 * userAdmin.setClubs(clubs);
-		 * 
-		 * unitRepository.save(unit);
-		 * 
-		 * addressRepository.save(address2);
-		 * 
-		 * phoneRepository.save(phone);
-		 * 
-		 * contactInfoRepository.save(contactInfo);
-		 * 
-		 * clubRepository.save(club); userRepository.save(userAdmin);
-		 */
 	}
 
 }

@@ -10,23 +10,20 @@ import ru.dmilut.prodlenka.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/users")
 	public String users(Model model) {
 		model.addAttribute("users", userService.findAll());
-		return "users";		
+		return "users";
 	}
-	
+
 	@RequestMapping("/users/{id}")
 	public String detail(Model model, @PathVariable long id) {
 		model.addAttribute("user", userService.findOne(id));
 		return "user-detail";
 	}
-	
-	
-	
 
 }

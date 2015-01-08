@@ -6,4 +6,6 @@ import ru.dmilut.prodlenka.entity.Unit;
 
 public interface UnitRepository extends JpaRepository<Unit, Long> {
 
+	/* List<Unit> findByUser(User user); */
+
 }
