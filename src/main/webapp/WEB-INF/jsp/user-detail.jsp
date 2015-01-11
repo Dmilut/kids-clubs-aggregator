@@ -12,15 +12,15 @@
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
-				<th>Address</th>
-				<th>Contact Info</th>
+				<th>Date of registration</th>
+				<th>Activity</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${unit.addresses}" var="address">
+			<c:forEach items="${unit.activity}" var="address">
 				<tr>
-					<td>${address.city}</td>
-					<td>${address.street}</td>
+					<td>${unit.dateOfRegistration}</td>
+					<td>${unit.activity}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

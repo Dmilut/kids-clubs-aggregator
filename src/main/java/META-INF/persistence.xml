@@ -11,7 +11,6 @@
 		<class>ru.dmilut.prodlenka.entity.Company</class>
 		<class>ru.dmilut.prodlenka.entity.ContactInfo</class>
 		<class>ru.dmilut.prodlenka.entity.Phone</class>
-		<class>ru.dmilut.prodlenka.entity.Role</class>
 		<class>ru.dmilut.prodlenka.entity.Schedule</class>
 		<class>ru.dmilut.prodlenka.entity.Teacher</class>
 		<class>ru.dmilut.prodlenka.entity.Unit</class>

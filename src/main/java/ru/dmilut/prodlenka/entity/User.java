@@ -2,11 +2,12 @@ package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -51,17 +52,16 @@ public class User {
 	@NotEmpty
 	private String password;
 
-	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "roles_id") })
-	private Set<Role> roles;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
-	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "units_id") })
-	private Set<Unit> units;
+	private List<Unit> units;
 
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
@@ -118,12 +118,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public Date getDateOfRegistration() {
@@ -134,11 +134,11 @@ public class User {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
-	public Set<Unit> getUnits() {
+	public List<Unit> getUnits() {
 		return units;
 	}
 
-	public void setUnits(Set<Unit> units) {
+	public void setUnits(List<Unit> units) {
 		this.units = units;
 	}
 

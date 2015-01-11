@@ -1,6 +1,7 @@
 package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -48,7 +49,7 @@ public class Unit {
 	private Set<Schedule> schedules;
 
 	@ManyToMany(mappedBy = "units")
-	private Set<User> users;
+	private List<User> users;
 
 	private Date dateOfRegistration = new Date();
 
@@ -111,11 +112,11 @@ public class Unit {
 		this.schedules = schedules;
 	}
 
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 

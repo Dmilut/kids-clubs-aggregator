@@ -1,26 +1,28 @@
 package ru.dmilut.prodlenka.service;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import ru.dmilut.prodlenka.entity.Role;
+import ru.dmilut.prodlenka.entity.Unit;
 import ru.dmilut.prodlenka.entity.User;
-import ru.dmilut.prodlenka.repository.RoleRepository;
+import ru.dmilut.prodlenka.repository.UnitRepository;
 import ru.dmilut.prodlenka.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
-	private RoleRepository roleRepository;
+	private UnitRepository unitRepository;
 
 	public List<User> findAll() {
 
@@ -32,13 +34,16 @@ public class UserService {
 		return userRepository.findOne(id);
 	}
 
-	/*@Transactional
-	public User findOneWitRoles(long id) {
+	public User findOneWithUnits(long id) {
 		User user = findOne(id);
-		Set<Role> roles = roleRepository.findByUsers(user);
-		user.setRoles(roles);
+		List<Unit> units = unitRepository.findByUser(user.getId(),
+				new PageRequest(0, 10, Direction.DESC, "id"));
+		user.setUnits(units);
 
 		return user;
 	}
-*/
+
+	public void save(User user) {
+		userRepository.save(user);
+	}
 }
