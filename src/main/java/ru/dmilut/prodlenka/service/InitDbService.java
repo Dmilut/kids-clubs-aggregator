@@ -124,8 +124,12 @@ public class InitDbService {
 		userUser.setUnits(units);
 		users1.add(userAdmin);
 		users1.add(userUser);
+		
+		unitRepository.save(unit1);
+		unitRepository.save(unit2);
 
 		userRepository.save(userAdmin);
+		userRepository.save(userUser);
 
 		/*
 		 * unitRepository.save(unit1); unitRepository.save(unit2);

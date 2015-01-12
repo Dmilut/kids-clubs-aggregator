@@ -52,14 +52,14 @@ public class User {
 	@NotEmpty
 	private String password;
 
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Role role;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
-	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "units_id") })
 	private List<Unit> units;
 
