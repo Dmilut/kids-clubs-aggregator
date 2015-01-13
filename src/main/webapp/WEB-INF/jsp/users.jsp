@@ -13,7 +13,7 @@
 		<c:forEach items="${users}" var="user">
 			<tr>
 				<td><a href="<spring:url value="/users/${user.id}.html" />">
-						${user.firstName} </a></td>
+						${user.name} </a></td>
 			</tr>
 
 		</c:forEach>

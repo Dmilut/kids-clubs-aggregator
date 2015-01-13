@@ -3,7 +3,7 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<h1>${user.firstName}</h1>
+<h1>${user.name}</h1>
 
 <c:forEach items="${user.units}" var="unit">
 	<h1>${unit.club.name}</h1>

@@ -2,5 +2,5 @@ package ru.dmilut.prodlenka.entity;
 
 public enum Role {
 
-	ADMIN, USER, ANONYMOUS
+	ROLE_ADMIN, ROLE_USER, ROLE_ANONYMOUS
 }

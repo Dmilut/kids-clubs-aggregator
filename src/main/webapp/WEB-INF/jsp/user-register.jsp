@@ -4,16 +4,15 @@
 <%@ include file="../layout/taglib.jsp"%>
 
 <form:form commandName="user" cssClass="form-horizontal">
+	<c:if test="${param.success eq true}">
+		<div class="alert alert-success">Registration successful!</div>
+
+	</c:if>
+
 	<div class="form-group">
-		<label for="firstName" class="col-sm-2 control-label">First name:</label>
+		<label for="name" class="col-sm-2 control-label">First name:</label>
 		<div class="col-sm-10">
-			<form:input path="firstName" cssClass="form-control" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="lastName" class="col-sm-2 control-label">Last name:</label>
-		<div class="col-sm-10">
-			<form:input path="lastName" cssClass="form-control" />
+			<form:input path="name" cssClass="form-control" />
 		</div>
 	</div>
 	<div class="form-group">

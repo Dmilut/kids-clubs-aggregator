@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -32,15 +34,9 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
-	@Column(name = "first_name")
 	@NotEmpty
 	@Size(min = 2, max = 20)
-	private String firstName;
-
-	@Column(name = "last_name")
-	@NotEmpty
-	@Size(min = 2, max = 20)
-	private String lastName;
+	private String name;
 
 	@Size(min = 2, max = 12)
 	private String nickname;
@@ -52,8 +48,13 @@ public class User {
 	@NotEmpty
 	private String password;
 
-	@Enumerated(EnumType.ORDINAL)
-	private Role role;
+	private boolean enabled;
+
+	@ElementCollection(targetClass = Role.class)
+	@CollectionTable(name = "users_roles")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role")
+	private List<Role> roles;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_registration")
@@ -78,20 +79,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getNickname() {
@@ -118,12 +111,20 @@ public class User {
 		this.password = password;
 	}
 
-	public Role getRole() {
-		return role;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	public Date getDateOfRegistration() {

@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ru.dmilut.prodlenka.entity.Club;
@@ -62,25 +63,25 @@ public class InitDbService {
 
 		Set<User> users1 = new HashSet<User>();
 		User userAdmin = new User();
-		userAdmin.setFirstName("firstUserAdminName");
-		userAdmin.setLastName("lastUserAdminName");
-		userAdmin.setPassword("passwordAdmin");
-		userAdmin.setEmail("userAdminEmail@test.ru");
-		User userUser = new User();
-		userUser.setFirstName("firstUserUserName");
-		userUser.setLastName("lastUserUserName");
-		userUser.setPassword("passwordUser");
-		userUser.setEmail("userUserEmail@test.ru");
+		userAdmin.setName("admin");
+		userAdmin.setEnabled(true);
 
-		userAdmin.setRole(Role.ADMIN);
-		userUser.setRole(Role.USER);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		userAdmin.setPassword(encoder.encode("admin"));
+
+		List<Role> roles = new ArrayList<>();
+		roles.add(Role.ROLE_ADMIN);
+		roles.add(Role.ROLE_USER);
+
+		userAdmin.setRoles(roles);
+		userAdmin.setEmail("userAdminEmail@test.ru");
 
 		Company company1 = new Company();
 		Company company2 = new Company();
 		company1.setName("testCompany1");
 		company2.setName("testCompany2");
 		userAdmin.setCompany(company1);
-		userUser.setCompany(company2);
+
 		company1.setUsers(users1);
 		company2.setUsers(users1);
 
@@ -102,8 +103,8 @@ public class InitDbService {
 		unit2.setClub(club2);
 		units.add(unit1);
 		units.add(unit2);
-		
-		for(Unit unit : units) {
+
+		for (Unit unit : units) {
 			unitsSet.add(unit);
 		}
 
@@ -120,21 +121,13 @@ public class InitDbService {
 		companyRepository.save(company2);
 		userAdmin.setCompany(company1);
 		userAdmin.setUnits(units);
-		userUser.setCompany(company2);
-		userUser.setUnits(units);
+
 		users1.add(userAdmin);
-		users1.add(userUser);
-		
+
 		unitRepository.save(unit1);
 		unitRepository.save(unit2);
 
 		userRepository.save(userAdmin);
-		userRepository.save(userUser);
-
-		/*
-		 * unitRepository.save(unit1); unitRepository.save(unit2);
-		 * clubRepository.save(club1); clubRepository.save(club2);
-		 */
 
 	}
 
