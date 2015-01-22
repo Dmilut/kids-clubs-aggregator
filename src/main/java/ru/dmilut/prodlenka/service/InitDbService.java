@@ -84,7 +84,7 @@ public class InitDbService {
 
 		company1.setUsers(users1);
 		company2.setUsers(users1);
-
+				
 		Set<Club> clubs1 = new HashSet<Club>();
 		Club club1 = new Club();
 		Club club2 = new Club();

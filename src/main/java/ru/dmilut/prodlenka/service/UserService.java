@@ -57,4 +57,10 @@ public class UserService {
 		
 		userRepository.save(user);
 	}
+
+	public User findOneWithUnits(String name) {
+		User user = userRepository.findByName(name);
+		
+		return findOneWithUnits(user.getId());
+	}
 }
