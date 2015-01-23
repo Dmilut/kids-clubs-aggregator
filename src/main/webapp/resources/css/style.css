@@ -383,50 +383,13 @@ nav.tm_navbar li a {
 /*---- /search-options ----*/
 
 /*---- search-content ----*/
-.slider {
+.search-content-box {
+	background: none repeat scroll 0 0 #f7f7fa;
+	border: 1px solid #dfdfeb;
 	border-radius: 12px;
 	overflow: hidden;
 	position: relative;
 	top: 0;
-	z-index: 0;
-}
-
-.camera_wrap {
-	display: none;
-	float: none;
-	margin: 0 !important;
-	position: relative;
-	z-index: 1;
-}
-
-.camera_fakehover {
-	height: 100%;
-	position: relative;
-	width: 100%;
-}
-
-.camera_src {
-	display: none;
-}
-
-.camera_target {
-	bottom: 0;
-	height: 100%;
-	left: 0;
-	overflow: hidden;
-	position: absolute;
-	right: 0;
-	text-align: left;
-	top: 0;
-	width: 100%;
-	z-index: 0;
-}
-
-.cameraCont, .cameraContents {
-	display: inline-block;
-	height: 100%;
-	position: relative;
-	width: 100%;
 }
 /*---- /search-content ----*/
 
