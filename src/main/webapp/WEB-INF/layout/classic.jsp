@@ -48,10 +48,10 @@
 			<div class="menu-box">
 				<div class="button-box">
 					<security:authorize access="! isAuthenticated()">
+						<!-- Buttons to trigger modal -->
 						<a class="${current == 'register' ? 'active' : ''}"
-							href="<spring:url value="/register.html" />">Register</a>
+							href="#registerModal" data-toggle="modal">Register</a>
 
-						<!-- Button to trigger modal -->
 						<a class="${current == 'login' ? 'active' : ''}"
 							href="#loginModal" data-toggle="modal">Login</a>
 					</security:authorize>
@@ -75,6 +75,9 @@
 								href="<spring:url value="/users.html" />">Users</a></li>
 						</security:authorize>
 
+						<li class="${current == 'units' ? 'active' : ''}"><a
+							href="<spring:url value="/units.html" />">Units</a></li>
+												
 						<li class="${current == 'clubs' ? 'active' : ''}"><a
 							href="<spring:url value="/" />">Clubs</a></li>
 
@@ -96,6 +99,63 @@
 			</div>
 		</div>
 	</div>
+
+
+	<!-- Modal window register -->
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="login-overlay" class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Register to site.com</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="well">
+
+							<form:form commandName="user" method="POST"
+								cssClass="form-horizontal">
+								<c:if test="${param.success eq true}">
+									<div class="alert alert-success">Registration successful!</div>
+
+								</c:if>
+
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label">First
+										name:</label>
+									<div class="col-sm-10">
+										<form:input path="name" cssClass="form-control" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-sm-2 control-label">Email:</label>
+									<div class="col-sm-10">
+										<form:input path="email" cssClass="form-control" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password" class="col-sm-2 control-label">Password:</label>
+									<div class="col-sm-10">
+										<form:password path="password" cssClass="form-control" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<input type="submit" value="Save"
+											class="btn btn-success btn-block" />
+									</div>
+								</div>
+							</form:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- Modal window login -->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
@@ -177,21 +237,6 @@
 
 	<tiles:insertAttribute name="footer" />
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("
-	#loader").click(function() {
-				// Load the page into the
-	div
-				$("#resultreturn").load("register.html");
-				// Show the modal
-	dialog
-				$("#resultreturn").dialog({
-					modal :true
-				});
-			});
-		});
-	</script>
 
 </body>
 </html>

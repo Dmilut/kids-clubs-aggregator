@@ -20,7 +20,7 @@ public class UserController {
 	private UserService userService;
 
 	@ModelAttribute("user")
-	public User construct() {
+	public User constructUser() {
 		return new User();
 	}
 
@@ -36,7 +36,7 @@ public class UserController {
 		return "user-detail";
 	}
 
-	@RequestMapping("/register")
+	/*@RequestMapping("/register")
 	public String showRegistrer() {
 		return "user-register";
 	}
@@ -45,14 +45,13 @@ public class UserController {
 	public String doRegistrer(@ModelAttribute("user") User user) {
 		userService.save(user);
 		return "redirect:/register.html?success=true";
-	}
-	
+	}*/
+
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal) {
 		String name = principal.getName();
 		model.addAttribute("user", userService.findOneWithUnits(name));
 		return "user-detail";
 	}
-	
 
 }

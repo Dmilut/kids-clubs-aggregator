@@ -69,30 +69,31 @@
 <div class="col-lg-9 col-md-9 col-sm-12 margBot pull-right slider-box">
 	<div class="search-content-box">
 
-		<%-- <h1>${user.name}</h1> --%>
+		<table id="user-detail"
+			class="table table-bordered table-hover table-striped">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>nickname</th>
+					<th>email</th>
+					<th>date Of Registration</th>
+					<th>Activity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${user.name}</td>
+					<td>${user.nickname}</td>
+					<td>${user.email}</td>
+					<td>${user.dateOfRegistration}</td>
+					<td><c:forEach items="${user.units}" var="unit">
+							<tr>
+								<td>${unit.activity}</td>
+							</tr>
+						</c:forEach></td>
+				</tr>
+			</tbody>
+		</table>
 
-		<c:forEach items="${user.units}" var="unit">
-			<%-- <h1>${unit.club.name}</h1>
-			<p>${unit.activity}</p> --%>
-
-			<table class="table table-bordered table-hover table-striped">
-				<thead>
-					<tr>
-						<th>Date of registration</th>
-						<th>Activity</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${unit.activity}" var="address">
-						<tr>
-							<td>${unit.dateOfRegistration}</td>
-							<td>${unit.activity}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-
-			</table>
-
-		</c:forEach>
 	</div>
 </div>

@@ -3,6 +3,7 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
+
 <div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-left">
 	<div class="box">
 		<h2>Booking</h2>
@@ -68,37 +69,28 @@
 </div>
 <div class="col-lg-9 col-md-9 col-sm-12 margBot pull-right slider-box">
 	<div class="search-content-box">
-		<table class="table table-bordered table-hover table-striped">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>nickname</th>
-					<th>email</th>
-					<th>date Of Registration</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${users}" var="user">
+
+			<table id="users"
+				class="table table-bordered table-hover table-striped">
+				<thead>
 					<tr>
-						<td><a href="<spring:url value="/users/${user.id}.html" />">
-								${user.name} </a></td>
-						<td>${user.nickname}</td>
-						<td>${user.email}</td>
-						<td>${user.dateOfRegistration}</td>
+						<th>name</th>
+						<th>nickname</th>
+						<th>email</th>
+						<th>date Of Registration</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+				</thead>
+				<tbody>
+					<c:forEach items="${users}" var="user">
+						<tr>
+							<td><a href="<spring:url value="/users/${user.id}.html" />">
+									${user.name} </a></td>
+							<td>${user.nickname}</td>
+							<td>${user.email}</td>
+							<td>${user.dateOfRegistration}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table></div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
