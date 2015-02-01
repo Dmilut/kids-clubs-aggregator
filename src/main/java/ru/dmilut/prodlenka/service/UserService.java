@@ -50,17 +50,29 @@ public class UserService {
 		user.setEnabled(true);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
-		
+
 		List<Role> roles = new ArrayList<>();
 		roles.add(Role.ROLE_USER);
 		user.setRoles(roles);
-		
+
 		userRepository.save(user);
 	}
 
 	public User findOneWithUnits(String name) {
 		User user = userRepository.findByName(name);
-		
+
 		return findOneWithUnits(user.getId());
+	}
+
+	public List<User> findAllByUnit(Long id) {
+		List<User> users = userRepository.findByUnit(id);
+
+		return users;
+	}
+
+	public void delete(long id) {
+		if (id != findOne(id).getId()) {
+			userRepository.delete(id);
+		}
 	}
 }

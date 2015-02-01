@@ -72,13 +72,13 @@
 <div class="col-lg-9 col-md-9 col-sm-12 margBot pull-right slider-box">
 	<div class="search-content-box">
 
-		<table id="users"
+		<table id="clubs"
 			class="table table-bordered table-hover table-striped">
 			<thead>
 				<tr>
 					<th>name</th>
-					<th>nickname</th>
-					<th>email</th>
+					<th>type</th>
+					<th>description</th>
 					<th>date Of Registration</th>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 						<th>delete</th>
@@ -86,16 +86,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${users}" var="user">
+				<c:forEach items="${clubs}" var="unit">
 					<tr>
-						<td><a href="<spring:url value="/users/${user.id}.html" />">
-								${user.name} </a></td>
-						<td>${user.nickname}</td>
-						<td>${user.email}</td>
-						<td>${user.dateOfRegistration}</td>
+						<td>${club.name}</td>
+						<td>${club.type}</td>
+						<td>${club.description}</td>
+						<td>${unit.dateOfRegistration}</td>
 						<security:authorize access="hasRole('ROLE_ADMIN')">
 							<td><a class="btn btn-danger"
-								href="<spring:url value="/user/remove/${user.id}.html" />">Delete</a></td>
+								href="<spring:url value="/unit/remove/${unit.id}.html" />">Delete</a></td>
 						</security:authorize>
 					</tr>
 				</c:forEach>

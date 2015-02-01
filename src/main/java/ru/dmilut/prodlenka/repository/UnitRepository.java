@@ -13,4 +13,6 @@ public interface UnitRepository extends JpaRepository<Unit, Long> {
 	@Query("SELECT u FROM Unit u INNER JOIN u.users us WHERE us.id = ?1")
 	List<Unit> findByUser(Long userId, Pageable pageable);
 
+	Unit findOne(Long id);
+
 }

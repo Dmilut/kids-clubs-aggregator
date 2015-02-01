@@ -77,9 +77,9 @@
 
 						<li class="${current == 'units' ? 'active' : ''}"><a
 							href="<spring:url value="/units.html" />">Units</a></li>
-												
+
 						<li class="${current == 'clubs' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">Clubs</a></li>
+							href="<spring:url value="/clubs.html" />">Clubs</a></li>
 
 						<li class="${current == 'parents' ? 'active' : ''}"><a
 							href="<spring:url value="/" />">Parents</a></li>

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/taglib.jsp"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 
 
 <div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-left">
@@ -76,6 +78,10 @@
 				<tr>
 					<th>activity</th>
 					<th>date Of Registration</th>
+					<th>club</th>
+					<security:authorize access="hasRole('ROLE_ADMIN')">
+						<th>delete</th>
+					</security:authorize>
 				</tr>
 			</thead>
 			<tbody>
@@ -83,6 +89,11 @@
 					<tr>
 						<td>${unit.activity}</td>
 						<td>${unit.dateOfRegistration}</td>
+						<td>${unit.club.name}</td>
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+							<td><a class="btn btn-danger"
+								href="<spring:url value="/unit/remove/${unit.id}.html" />">Delete</a></td>
+						</security:authorize>
 					</tr>
 				</c:forEach>
 			</tbody>
