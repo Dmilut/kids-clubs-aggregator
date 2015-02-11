@@ -30,17 +30,14 @@ public class UnitService {
 	}
 
 	public void delete(long id) {
-		List<User> users = userService.findAllByUnit(id);
-		Unit unit = unitRepository.findOne(id);
-		for (User u : users) {
-			List<Unit> units = u.getUnits();
-			for (int i = 0; i < u.getUnits().size(); i++) {
-				if (units.get(i).equals(unit)) {
-					units.remove(i);
-				}
-			}
-			u.setUnits(units);
-		}
 		unitRepository.delete(id);
 	}
+
+	/*
+	 * public void delete(long id) { List<User> users =
+	 * userService.findAllByUnit(id); Unit unit = unitRepository.findOne(id);
+	 * for (User u : users) { List<Unit> units = u.getUnits(); for (int i = 0; i
+	 * < u.getUnits().size(); i++) { if (units.get(i).equals(unit)) {
+	 * units.remove(i); } } u.setUnits(units); } unitRepository.delete(id); }
+	 */
 }

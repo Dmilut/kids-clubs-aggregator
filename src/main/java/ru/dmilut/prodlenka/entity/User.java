@@ -3,7 +3,6 @@ package ru.dmilut.prodlenka.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -60,7 +59,8 @@ public class User {
 	@Column(name = "date_registration")
 	private Date dateOfRegistration = new Date();
 
-	@ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
+	/* @ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY) */
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "users_id") }, inverseJoinColumns = { @JoinColumn(name = "units_id") })
 	private List<Unit> units;
 

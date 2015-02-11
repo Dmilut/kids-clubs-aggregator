@@ -48,7 +48,8 @@ public class Unit {
 	@OneToMany(mappedBy = "unit")
 	private Set<Schedule> schedules;
 
-	@ManyToMany(mappedBy = "units", fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "units_id") }, inverseJoinColumns = { @JoinColumn(name = "users_id") })
 	private List<User> users;
 
 	private Date dateOfRegistration = new Date();
