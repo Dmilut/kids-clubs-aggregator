@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ru.dmilut.prodlenka.entity.Address;
 import ru.dmilut.prodlenka.entity.Club;
 import ru.dmilut.prodlenka.entity.Company;
 import ru.dmilut.prodlenka.entity.Role;
@@ -84,7 +85,7 @@ public class InitDbService {
 
 		company1.setUsers(users1);
 		company2.setUsers(users1);
-				
+
 		Set<Club> clubs1 = new HashSet<Club>();
 		Club club1 = new Club();
 		Club club2 = new Club();
@@ -110,6 +111,23 @@ public class InitDbService {
 
 		club1.setUnits(unitsSet);
 		club2.setUnits(unitsSet);
+
+		List<Address> addresses1 = new ArrayList<>();
+		List<Address> addresses2 = new ArrayList<>();
+		Address address1 = new Address();
+		address1.setCity("city1");
+		address1.setClub(club1);
+
+		Address address2 = new Address();
+		address2.setCity("city2");
+		address2.setClub(club2);
+
+		addresses1.add(address1);
+		addresses2.add(address2);
+
+		club1.setAddresses(addresses1);
+		club2.setAddresses(addresses2);
+
 		clubs1.add(club1);
 		clubs1.add(club2);
 		company1.setUsers(users1);

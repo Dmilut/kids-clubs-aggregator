@@ -1,11 +1,14 @@
 package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,8 +33,8 @@ public class Club {
 
 	private String description;
 
-	@OneToMany(mappedBy = "club")
-	private Set<Address> addresses;
+	@OneToMany(mappedBy = "club", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Address> addresses;
 
 	@OneToMany(mappedBy = "club")
 	private Set<ContactInfo> contactInfos;
@@ -81,11 +84,11 @@ public class Club {
 		this.description = description;
 	}
 
-	public Set<Address> getAddresses() {
+	public List<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(Set<Address> addresses) {
+	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
 

@@ -13,7 +13,7 @@
 			<div class="controlHolder">
 				<div class="controlHolder">
 
-					<!-- Serach string -->
+					<!-- Search string -->
 					<div class="control-group">
 						<label class="control-label" for="search">Search units</label>
 						<div class="controls">

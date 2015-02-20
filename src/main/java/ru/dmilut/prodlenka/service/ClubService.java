@@ -21,4 +21,10 @@ public class ClubService {
 		return clubRepository.findAll();
 	}
 
+	public Object findAllByQuery(String query) {
+
+		List<Club> clubs = clubRepository.findAllByQuery(query);
+		return clubs;
+	}
+
 }
