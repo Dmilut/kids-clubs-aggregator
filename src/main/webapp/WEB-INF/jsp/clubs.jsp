@@ -22,32 +22,16 @@
 						<label class="control-label" for="city">City:</label>
 						<div class="controls">
 
-							<form:select path="${city}" name="city" cssClass="form-control">
-								<form:option value="" label="--- Select ---" />
-								<form:options items="${cityList}" />
-							</form:select>
-
-
-<!-- TODO динамический выпадающий список --> 
-<%-- 							<form:select path="${city}" name="city" cssClass="form-control">
-								<c:forEach items="${cityList}" var="city" varStatus="status">
-									<c:choose>
-										<c:when test="${city == currentCity}">
-											<!-- <option value="-">--Please Select</option> -->
-
-											<option
-												<c:if test="${city == currentCity}">selected="$(city)"</c:if>
-												value="${city}">${city}</option>
-										</c:when>
-										<c:otherwise>
-											<!-- <option value="-">--Please Select</option> -->
-											<option value="${city}">${city}</option>
-										</c:otherwise>
-									</c:choose>
+							<form:select path="${city}" name="city" cssClass="form-control"
+								multiple="">
+								<option value="${null}">-- Select --</option>
+								<c:forEach items="${cityList}" var="c">
+									<option
+										<c:if test="${c eq currentCity}">selected="selected"</c:if>
+										value="${c}">${c}</option>
 								</c:forEach>
 							</form:select>
- --%>
- 
+
 						</div>
 					</div>
 				</div>

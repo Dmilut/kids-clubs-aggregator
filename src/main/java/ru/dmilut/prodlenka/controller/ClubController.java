@@ -32,11 +32,10 @@ public class ClubController {
 		return new User();
 	}
 
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String clubs(Model model) {
 		model.addAttribute("clubs", clubService.findAll());
-		String currentCity = null;
-		model.addAttribute("currentCity", currentCity);
 		initModelList(model);
 		return "clubs";
 	}
@@ -45,11 +44,12 @@ public class ClubController {
 	public String searchClubs(@RequestParam("city") String city, Model model) {
 		model.addAttribute("clubs", clubService.findAllByQuery(city));
 		String currentCity = null;
-		if (city != null) {
+		if(city != null) {
 			currentCity = city;
 		}
 		model.addAttribute("currentCity", currentCity);
 		initModelList(model);
+		
 		return "clubs";
 	}
 
@@ -59,7 +59,7 @@ public class ClubController {
 		for (Address address : addressList) {
 			cityList.add(address.getCity());
 		}
-
+		
 		model.addAttribute("cityList", cityList);
 	}
 }
