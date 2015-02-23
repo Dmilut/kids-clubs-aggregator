@@ -1,7 +1,7 @@
 package ru.dmilut.prodlenka.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,10 +25,10 @@ public class Company {
 	private String name;
 
 	@OneToMany(mappedBy = "company")
-	private Set<Club> clubs;
+	private List<Club> clubs;
 
 	@OneToMany(mappedBy = "company")
-	private Set<User> users;
+	private List<User> users;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_registration")
@@ -50,19 +50,19 @@ public class Company {
 		this.name = name;
 	}
 
-	public Set<Club> getClubs() {
+	public List<Club> getClubs() {
 		return clubs;
 	}
 
-	public void setClubs(Set<Club> clubs) {
+	public void setClubs(List<Club> clubs) {
 		this.clubs = clubs;
 	}
 
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 

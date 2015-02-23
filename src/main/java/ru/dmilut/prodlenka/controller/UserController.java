@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import ru.dmilut.prodlenka.entity.User;
 import ru.dmilut.prodlenka.service.UserService;
@@ -36,16 +35,14 @@ public class UserController {
 		return "user-detail";
 	}
 
-	/*@RequestMapping("/register")
-	public String showRegistrer() {
-		return "user-register";
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String doRegistrer(@ModelAttribute("user") User user) {
-		userService.save(user);
-		return "redirect:/register.html?success=true";
-	}*/
+	/*
+	 * @RequestMapping("/register") public String showRegistrer() { return
+	 * "user-register"; }
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String doRegistrer(@ModelAttribute("user") User user) {
+	 * userService.save(user); return "redirect:/register.html?success=true"; }
+	 */
 
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal) {

@@ -32,24 +32,26 @@ public class ClubController {
 		return new User();
 	}
 
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public String clubs(Model model) {
-		model.addAttribute("clubs", clubService.findAll());
+		model.addAttribute("clubs", clubService.findAllWithAddressesUnits());
 		initModelList(model);
 		return "clubs";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String searchClubs(@RequestParam("city") String city, Model model) {
-		model.addAttribute("clubs", clubService.findAllByQuery(city));
 		String currentCity = null;
-		if(city != null) {
+		if (!city.isEmpty()) {
 			currentCity = city;
+			model.addAttribute("clubs",
+					clubService.findAllWithAddressesUnitsByQuery(city));
+		} else {
+			model.addAttribute("clubs", clubService.findAllWithAddressesUnits());
 		}
 		model.addAttribute("currentCity", currentCity);
 		initModelList(model);
-		
+
 		return "clubs";
 	}
 
@@ -59,7 +61,7 @@ public class ClubController {
 		for (Address address : addressList) {
 			cityList.add(address.getCity());
 		}
-		
+
 		model.addAttribute("cityList", cityList);
 	}
 }

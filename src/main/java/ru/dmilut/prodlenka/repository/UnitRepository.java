@@ -15,4 +15,6 @@ public interface UnitRepository extends JpaRepository<Unit, Long> {
 
 	Unit findOne(Long id);
 
+	List<Unit> findByClubId(Long id, Pageable pageable);
+
 }

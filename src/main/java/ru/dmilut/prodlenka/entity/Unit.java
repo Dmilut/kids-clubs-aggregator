@@ -27,7 +27,7 @@ public class Unit {
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "clubs_id")
 	private Club club;
 

@@ -33,14 +33,14 @@ public class Club {
 
 	private String description;
 
-	@OneToMany(mappedBy = "club", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Address> addresses;
 
 	@OneToMany(mappedBy = "club")
-	private Set<ContactInfo> contactInfos;
+	private List<ContactInfo> contactInfos;
 
-	@OneToMany(mappedBy = "club")
-	private Set<Unit> units;
+	@OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Unit> units;
 
 	@ManyToOne
 	@JoinColumn(name = "companies_id")
@@ -92,19 +92,19 @@ public class Club {
 		this.addresses = addresses;
 	}
 
-	public Set<ContactInfo> getContactInfos() {
+	public List<ContactInfo> getContactInfos() {
 		return contactInfos;
 	}
 
-	public void setContactInfos(Set<ContactInfo> contactInfos) {
+	public void setContactInfos(List<ContactInfo> contactInfos) {
 		this.contactInfos = contactInfos;
 	}
 
-	public Set<Unit> getUnits() {
+	public List<Unit> getUnits() {
 		return units;
 	}
 
-	public void setUnits(Set<Unit> units) {
+	public void setUnits(List<Unit> units) {
 		this.units = units;
 	}
 
