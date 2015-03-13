@@ -19,6 +19,8 @@ public class Address {
 	@Size(min = 2, max = 30)
 	private String city;
 
+	private String area;
+
 	private String subwayStation;
 
 	@Size(min = 2, max = 50)
@@ -52,6 +54,14 @@ public class Address {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 	public String getSubwayStation() {

@@ -46,6 +46,12 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/clubs.jsp" />
 		<put-attribute name="current" value="clubs" />
 	</definition>
+	
+	<definition name="club-detail" extends="common">
+		<put-attribute name="title" value="Club detail" />
+		<put-attribute name="body" value="/WEB-INF/jsp/club-detail.jsp" />
+		<put-attribute name="current" value="clubs" />
+	</definition>
 
 
 </tiles-definitions>

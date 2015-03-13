@@ -1,13 +1,19 @@
 @import
-	url(//fonts.googleapis.com/css?family=Roboto:400,300,500,700,900);
+	url(//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&subset=latin,cyrillic)
+	;
 
-@import url(//fonts.googleapis.com/css?family=Chewy);
+@import
+	url(http://fonts.googleapis.com/css?family=Philosopher:700italic&subset=latin,cyrillic)
+	;
 
 /*------------ all ------------*/
 body {
 	background: #ffffff;
-	font: 15px 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
-	line-height: 1.428571429;
+	font: 15 px'                    
+	    
+	
+	Roboto';
+	line-height: 1 .428571429;
 	color: #829399;
 }
 
@@ -35,7 +41,7 @@ p.color1 {
 
 h2 {
 	color: #ffffff;
-	font: 45px/50px "Chewy";
+	font: 45px/50px "Philosopher";
 	margin: 0 0 14px;
 	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
@@ -289,97 +295,70 @@ nav.tm_navbar li a {
 }
 
 /*---- dropdown ----*/
-.dropdown-menu>li>a {
-	clear: both;
-	display: block;
-	font-weight: 400;
-	line-height: 1.42857;
-	padding: 3px 20px;
-	white-space: nowrap;
+.control-group {
+	padding: 6px 0px 6px 0px;
 }
 
-.dropdown-menu {
-	background-clip: padding-box;
-	background-color: #fff;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 4px;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
-	display: none;
-	float: left;
-	font-size: 14px;
-	list-style: outside none none;
-	min-width: 200px;
-	margin: 0;
-	padding: 5px 0;
-	position: absolute;
-	text-align: left;
-	top: 100%;
-	z-index: 1000;
-	padding: 5px 0
-}
 /*---- /dropdown ----*/
 
 /*---- slider ----*/
-.rangeslider {
-	position: relative;
+.slider {
+	background: white;
+	border: none;
+	border-radius: 4px;	
 }
 
-.rangeslider, .rangeslider__fill {
-	background: none repeat scroll 0 0 #e6e6e6;
-	border-radius: 10px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) inset;
-	display: block;
-	height: 20px;
+.slider label {
+	display: inline;
+	padding: 0px 0px 0px 12px;	
+	font: 500 14px "Roboto";
+	color: #555;
+}
+
+.slider output {
+	display: inline;
+	padding: 0px 0px 0px 12px;
+	font: 500 14px "Roboto";
+	color: #555;
+}
+
+input[type=range] {
+	/* fix for FF unable to apply focus style bug  */
+	background: white;
+	border: none;
+	border-radius: 4px;
+	/*required for proper track sizing in FF*/
+	/* width: 300px; */
+}
+
+input[type=range]::-moz-range-track {
 	width: 100%;
+	height: 5px;
+	background: #ddd;
+	border: none;
+	border-radius: 4px;
 }
 
-.rangeslider__fill {
-	background: none repeat scroll 0 0 #00ff00;
-	position: absolute;
-	top: 0;
-}
-
-.rangeslider, .rangeslider__fill {
-	background: none repeat scroll 0 0 #e6e6e6;
-	border-radius: 10px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) inset;
-	display: block;
-	height: 20px;
-	width: 100%;
-}
-
-.rangeslider__handle:after {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.13),
-		rgba(255, 255, 255, 0));
-	background-size: 100% auto;
+input[type=range]::-moz-range-thumb {
+	border: 1px solid grey;
+	height: 16px;
+	width: 16px;
 	border-radius: 50%;
-	bottom: 0;
-	content: "";
-	display: block;
-	height: 18px;
-	left: 0;
-	margin: auto;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 18px;
+	background: #04afef;
 }
 
-.rangeslider__handle {
-	background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1))
-		repeat scroll 0 0/100% auto white;
-	border: 1px solid #ccc;
-	border-radius: 50%;
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	cursor: pointer;
-	display: inline-block;
-	height: 40px;
-	position: absolute;
-	top: -10px;
-	width: 40px;
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring {
+	/* outline: 1px solid white;
+	outline-offset: -1px; */
+	
 }
 
+input[type=range]:focus::-moz-range-track {
+	background: #ddd;
+}
 /*---- /slider ----*/
+
 /*---- /search-options ----*/
 
 /*---- search-content ----*/

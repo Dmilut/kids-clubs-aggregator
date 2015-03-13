@@ -50,16 +50,16 @@
 					<security:authorize access="! isAuthenticated()">
 						<!-- Buttons to trigger modal -->
 						<a class="${current == 'register' ? 'active' : ''}"
-							href="#registerModal" data-toggle="modal">Register</a>
+							href="#registerModal" data-toggle="modal">Регистрация</a>
 
 						<a class="${current == 'login' ? 'active' : ''}"
-							href="#loginModal" data-toggle="modal">Login</a>
+							href="#loginModal" data-toggle="modal">Вход</a>
 					</security:authorize>
 
 					<security:authorize access="isAuthenticated()">
 						<a class="${current == 'account' ? 'active' : ''}"
 							href="<spring:url value="/account.html" />">My account</a>
-						<a href="<spring:url value="/logout" />">Logout</a>
+						<a href="<spring:url value="/logout" />">Выход</a>
 					</security:authorize>
 				</div>
 				<nav
@@ -68,24 +68,24 @@
 
 					<ul class="nav sf-menu clearfix sf-js-enabled sf-arrows">
 						<li class="${current == 'index' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">Home</a></li>
+							href="<spring:url value="/" />">Домой</a></li>
 
 						<security:authorize access="hasRole('ROLE_ADMIN')">
 							<li class="${current == 'users' ? 'active' : ''}"><a
-								href="<spring:url value="/users.html" />">Users</a></li>
+								href="<spring:url value="/users.html" />">Пользователи</a></li>
 						</security:authorize>
 
 						<li class="${current == 'units' ? 'active' : ''}"><a
-							href="<spring:url value="/units.html" />">Units</a></li>
+							href="<spring:url value="/units.html" />">Модули</a></li>
 
 						<li class="${current == 'clubs' ? 'active' : ''}"><a
-							href="<spring:url value="/clubs.html" />">Clubs</a></li>
+							href="<spring:url value="/clubs.html" />">Клубы</a></li>
 
 						<li class="${current == 'parents' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">Parents</a></li>
+							href="<spring:url value="/" />">Родителям</a></li>
 
 						<li class="${current == 'contacts' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">Contacts</a></li>
+							href="<spring:url value="/" />">О нас</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -110,7 +110,7 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Register to site.com</h4>
+					<h4 class="modal-title" id="myModalLabel">Регистрация на vneurokov.ru</h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -124,27 +124,26 @@
 								</c:if>
 
 								<div class="form-group">
-									<label for="name" class="col-sm-2 control-label">First
-										name:</label>
+									<label for="name" class="col-sm-2 control-label">Имя:</label>
 									<div class="col-sm-10">
 										<form:input path="name" cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="email" class="col-sm-2 control-label">Email:</label>
+									<label for="email" class="col-sm-2 control-label">Эл. почта:</label>
 									<div class="col-sm-10">
 										<form:input path="email" cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="password" class="col-sm-2 control-label">Password:</label>
+									<label for="password" class="col-sm-2 control-label">Пароль:</label>
 									<div class="col-sm-10">
 										<form:password path="password" cssClass="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
-										<input type="submit" value="Save"
+										<input type="submit" value="Зарегистрироваться"
 											class="btn btn-success btn-block" />
 									</div>
 								</div>
@@ -166,7 +165,7 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Login to site.com</h4>
+					<h4 class="modal-title" id="myModalLabel">Войти на vneurokov.ru</h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -176,7 +175,7 @@
 									method="POST">
 									<div class="form-group">
 										<!-- Name -->
-										<label for="inputName" class="sr-only">Email address</label>
+										<label for="inputName" class="sr-only">Эл. почта</label>
 										<input type="text" name="j_username" class="form-control"
 											placeholder="Name" required autofocus>
 										<span class="help-block"></span>
@@ -184,7 +183,7 @@
 
 									<div class="form-group">
 										<!-- Password -->
-										<label for="inputPassword" class="sr-only">Password</label>
+										<label for="inputPassword" class="sr-only">Пароль</label>
 										<input type="password" name="j_password" class="form-control"
 											placeholder="Password" required>
 										<span class="help-block"></span>
@@ -195,37 +194,28 @@
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" name="remember" id="remember">
-											Remember login
+											Запомнить меня
 										</label>
-										<p class="help-block">(if this is a private computer)</p>
-									</div>
-
-									<button type="submit" class="btn btn-success btn-block">Login</button>
-									<a href="/forgot/" class="btn btn-default btn-block">Help
-										to login</a>
+										<!-- <p class="help-block">(если эт)</p> -->
+									</div></button>
+									<a href="/forgot/" class="btn btn-default btn-block">Войти</a>
 								</form>
 							</div>
 						</div>
 						<div class="col-xs-6">
 							<p class="lead">
-								Register now for <span class="text-success">FREE</span>
+								Зарегистрируйся сейчас <span class="text-success">Бесплатно</span>
 							</p>
 							<ul class="list-unstyled" style="line-height: 2">
-								<li><span class="fa fa-check text-success"></span> See all
-									your orders</li>
-								<li><span class="fa fa-check text-success"></span> Fast
-									re-order</li>
-								<li><span class="fa fa-check text-success"></span> Save
-									your favorites</li>
-								<li><span class="fa fa-check text-success"></span> Fast
-									checkout</li>
-								<li><span class="fa fa-check text-success"></span> Get a
-									gift <small>(only new customers)</small></li>
-								<li><a href="/read-more/"><u>Read more</u></a></li>
+								<li><span class="fa fa-check text-success"></span> Выставляй оценки</li>
+								<li><span class="fa fa-check text-success"></span> Подписывайся на рассылки</li>
+								<li><span class="fa fa-check text-success"></span> Узнавай расписание</li>
+								<li><span class="fa fa-check text-success"></span> Запоминай настройки</li>
+								<li><span class="fa fa-check text-success"></span> Получай подарки <small>(только для новых пользователей)</small></li>
+								<li><a href="/read-more/"><u>Узнать больше</u></a></li>
 							</ul>
 							<p>
-								<a href="/new-customer/" class="btn btn-info btn-block">Yes
-									please, register now!</a>
+								<a href="/new-customer/" class="btn btn-info btn-block">Да, зарегистрироваться сейчас!</a>
 							</p>
 						</div>
 					</div>

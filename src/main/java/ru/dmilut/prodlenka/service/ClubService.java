@@ -29,6 +29,10 @@ public class ClubService {
 	@Autowired
 	private UnitRepository unitRepository;
 
+	public Club findOne(Long id) {		
+		return clubRepository.findOne(id);
+	}
+	
 	public List<Club> findAll() {
 		return clubRepository.findAll();
 	}

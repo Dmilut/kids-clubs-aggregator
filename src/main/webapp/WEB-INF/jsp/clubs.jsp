@@ -5,6 +5,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
 <div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-left">
 	<div class="box">
@@ -13,28 +17,72 @@
 			do eiusmod tempo.</p>
 
 		<div>
+
 			<form:form method="POST" commandName="clubs" id="bookingForm"
 				cssClass="form-horizontal">
 				<div class="controlHolder">
+
 					<!-- City -->
 					<div class="control-group">
-						<label class="control-label" for="city">City:</label>
-						<div class="controls">
-							<form:select path="${city}" name="city" cssClass="form-control"
-								multiple="">
-								<option value="">-- Select all --</option>
-								<c:forEach items="${cityList}" var="c">
-									<option
-										<c:if test="${c eq currentCity}">selected="selected"</c:if>
-										value="${c}">${c}</option>
-								</c:forEach>
-							</form:select>
+						<form:select path="${city}" name="city" cssClass="form-control"
+							multiple="">
+							<option value="">Город</option>
+							<c:forEach items="${cityList}" var="c">
+								<option
+									<c:if test="${c eq currentCity}">selected="selected"</c:if>
+									value="${c}">${c}</option>
+							</c:forEach>
+						</form:select>
+					</div>
+					<!-- /City -->
+
+					<!-- Area -->
+					<div class="control-group">
+						<form:select path="${city}" name="city" cssClass="form-control"
+							multiple="">
+							<option value="">Район</option>
+							<c:forEach items="${cityList}" var="c">
+								<option
+									<c:if test="${c eq currentCity}">selected="selected"</c:if>
+									value="${c}">${c}</option>
+							</c:forEach>
+						</form:select>
+					</div>
+					<!-- /Area -->
+
+					<!-- Subway station -->
+					<div class="control-group">
+						<form:select path="${city}" name="city" cssClass="form-control"
+							multiple="">
+							<option value="">Станция метро</option>
+							<c:forEach items="${cityList}" var="c">
+								<option
+									<c:if test="${c eq currentCity}">selected="selected"</c:if>
+									value="${c}">${c}</option>
+							</c:forEach>
+						</form:select>
+					</div>
+					<!-- /Subway station -->
+					<div class="control-group">
+						<div class="slider">
+							<input type="range" value="1" min="1" max="18" step="1"
+								onchange="rangevalue.value=value" name="mynumber1">
+							<label>Возраст ребенка</label>
+							<output id="rangevalue">1</output>
 						</div>
 					</div>
-					<!-- City -->
+					<div class="control-group">
+						<div class="slider">
+							<input type="range" value="0" min="0" max="10000" step="50"
+								onchange="rangevalue1.value=value" name="mynumber2">
+							<label>Стоимость в мес.</label>
+							<output id="rangevalue1">1</output>
+						</div>
+					</div>
+
 				</div>
 				<input class="btn-default btn btn1" type="submit" name="submit"
-					value="Submit">
+					value="Подобрать">
 			</form:form>
 		</div>
 	</div>
@@ -61,7 +109,8 @@
 			<tbody>
 				<c:forEach items="${clubs}" var="club">
 					<tr>
-						<td>${club.name}</td>
+						<td><a href="<spring:url value="/clubs/${club.id}.html" />">
+								${club.name} </a></td>
 
 						<td><c:forEach items="${club.addresses}" var="address">
 								<div class="list-group">
@@ -90,4 +139,3 @@
 		</table>
 	</div>
 </div>
-
