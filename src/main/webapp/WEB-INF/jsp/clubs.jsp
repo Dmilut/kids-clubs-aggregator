@@ -36,28 +36,28 @@
 					</div>
 					<!-- /City -->
 
-					<!-- Area -->
+					<!-- District -->
 					<div class="control-group">
-						<form:select path="${city}" name="city" cssClass="form-control"
+						<form:select path="${district}" name="district" cssClass="form-control"
 							multiple="">
 							<option value="">Район</option>
-							<c:forEach items="${cityList}" var="c">
+							<c:forEach items="${districtList}" var="c">
 								<option
-									<c:if test="${c eq currentCity}">selected="selected"</c:if>
+									<c:if test="${c eq currentDistrict}">selected="selected"</c:if>
 									value="${c}">${c}</option>
 							</c:forEach>
 						</form:select>
 					</div>
-					<!-- /Area -->
+					<!-- /District -->
 
 					<!-- Subway station -->
 					<div class="control-group">
-						<form:select path="${city}" name="city" cssClass="form-control"
+						<form:select path="${subwayStation}" name="subwayStation" cssClass="form-control"
 							multiple="">
 							<option value="">Станция метро</option>
-							<c:forEach items="${cityList}" var="c">
+							<c:forEach items="${subwayStationList}" var="c">
 								<option
-									<c:if test="${c eq currentCity}">selected="selected"</c:if>
+									<c:if test="${c eq ccurrentSubwayStation}">selected="selected"</c:if>
 									value="${c}">${c}</option>
 							</c:forEach>
 						</form:select>

@@ -14,6 +14,7 @@
 		<class>ru.dmilut.prodlenka.entity.Schedule</class>
 		<class>ru.dmilut.prodlenka.entity.Teacher</class>
 		<class>ru.dmilut.prodlenka.entity.Unit</class>
+		<class>ru.dmilut.prodlenka.entity.UploadedFile</class>
 		<class>ru.dmilut.prodlenka.entity.User</class>
 	</persistence-unit>
 </persistence>

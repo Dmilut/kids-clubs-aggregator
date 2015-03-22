@@ -3,93 +3,25 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-left">
-	<div class="box">
-		<h2>Booking</h2>
-		<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed
-			do eiusmod tempo.</p>
-
-		<form id="bookingForm">
-			<div class="controlHolder">
-				<div class="controlHolder">
-
-					<!-- Search string -->
-					<div class="control-group">
-						<label class="control-label" for="search">Search units</label>
-						<div class="controls">
-							<input type="text" id="Search" name="search" placeholder="String"
-								class="form-control input-normal">
-
-						</div>
-					</div>
-
-					<!-- City -->
-					<div class="control-group">
-						<label class="control-label" for="city">City:</label>
-						<div class="controls">
-							<select class="form-control ">
-								<option value="all">Default</option>
-								<option value="s1">Select1</option>
-								<option value="s2">Select2</option>
-								<option value="s2">Select3</option>
-							</select>
-						</div>
-					</div>
-					<!-- City -->
-					<div class="control-group">
-						<label class="control-label" for="city">City:</label>
-						<div class="controls">
-							<select class="form-control ">
-								<option value="all">Default</option>
-								<option value="s1">Select1</option>
-								<option value="s2">Select2</option>
-								<option value="s2">Select3</option>
-							</select>
-						</div>
-					</div>
-					<!-- City -->
-					<div class="control-group">
-						<label class="control-label" for="city">City:</label>
-						<div class="controls">
-							<select class="form-control ">
-								<option value="all">Default</option>
-								<option value="s1">Select1</option>
-								<option value="s2">Select2</option>
-								<option value="s2">Select3</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<a class="btn-default btn1" data-type="submit" href="#">Book now!</a>
-		</form>
-	</div>
-</div>
-<div class="col-lg-9 col-md-9 col-sm-12 margBot pull-right slider-box">
-	<div class="search-content-box"></div>
-</div>
-
-<div class="clearfix"></div>
 
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 	<div class="content-box1">
 		<h2 class="color1">
-			Parents, join <br> <span>for FREE!</span>
+			Родители, найдите занятия для ребенка<br> <span>бесплатно!</span>
 		</h2>
 		<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed
 			do eiusmod tempor incididunt ut labore et dolore magna.</p>
 		<ul class="list1-1">
 			<li><a href="#">Post a job for free.</a></li>
 			<li><a href="#">Get full access to search.</a></li>
-			<li><a href="#">View unlimited babysitter profiles.</a></li>
+			<li><a href="#">View unlimited child teacher profiles.</a></li>
 			<li><a href="#">Upgrade when you are ready to make contact.</a></li>
 		</ul>
 		<a href="#" class="btn-default btn2" data-type="submit">Join Now!</a>
 	</div>
 	<div class="content-box1">
 		<h2 class="color1">
-			Our <span>Members</span>
+			Наши <span>пользователи</span>
 		</h2>
 		<ul class="list1 indent">
 			<li><a href="#"><em>Parents</em> <span>(433651)</span></a></li>
@@ -107,7 +39,7 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6">
 			<div class="content-box2 maxheight">
-				<h2>Find A Babysitter</h2>
+				<h2>Find A Child Teacher</h2>
 				<h3>Lorem ipsum dolor sit amet conse ctetur adipisicing elit.</h3>
 				<p class="color1">
 					Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do
@@ -132,7 +64,7 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<h2 class="color1">
-					Caring babysitters <br> <span>for your kids</span>
+					Caring child teacher <br> <span>for your kids</span>
 				</h2>
 				<h3 class="color1">Lorem ipsum dolor sit amet conse ctetur
 					adipisicing elit, sed do eiusmod tempor incididunt ut labore magna
@@ -147,7 +79,7 @@
 	</div>
 	<div class="content-box4">
 		<h2 class="color1">
-			Connecting parents <span>and babysitters</span>
+			Connecting parents <span>and child teacher</span>
 		</h2>
 		<h3 class="color1">Lorem ipsum dolor sit amet conse ctetur
 			adipisicing elit, sed do eiusmod tempor incididunt ut labore et

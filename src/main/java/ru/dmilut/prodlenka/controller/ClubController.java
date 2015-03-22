@@ -40,8 +40,14 @@ public class ClubController {
 	}
 
 	@RequestMapping(value = "/clubs", method = RequestMethod.POST)
-	public String searchClubs(@RequestParam("city") String city, Model model) {
+	public String searchClubs(@RequestParam("city") String city,
+			@RequestParam("district") String district,
+			@RequestParam("subwayStation") String subwayStation, Model model) {
+
 		String currentCity = null;
+		String currentDistrict = null;
+		String currentSubwayStation = null;
+
 		if (!city.isEmpty()) {
 			currentCity = city;
 			model.addAttribute("clubs",
@@ -49,7 +55,11 @@ public class ClubController {
 		} else {
 			model.addAttribute("clubs", clubService.findAllWithAddressesUnits());
 		}
+
 		model.addAttribute("currentCity", currentCity);
+		model.addAttribute("currentDistrict", currentDistrict);
+		model.addAttribute("currentSubwayStation", currentSubwayStation);
+
 		initModelList(model);
 
 		return "clubs";
@@ -60,14 +70,20 @@ public class ClubController {
 		model.addAttribute("club", clubService.findOne(id));
 		return "club-detail";
 	}
-	
+
 	private void initModelList(Model model) {
 		List<Address> addressList = addressService.findAll();
 		List<String> cityList = new ArrayList<>();
+		List<String> districtList = new ArrayList<>();
+		List<String> subwayStationList = new ArrayList<>();
 		for (Address address : addressList) {
 			cityList.add(address.getCity());
+			districtList.add(address.getDistrict());
+			subwayStationList.add(address.getSubwayStation());
 		}
 
 		model.addAttribute("cityList", cityList);
+		model.addAttribute("districtList", districtList);
+		model.addAttribute("subwayStationList", subwayStationList);
 	}
 }

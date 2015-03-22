@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -31,6 +32,7 @@ public class Club {
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
+	@Lob
 	private String description;
 
 	@OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -51,6 +53,9 @@ public class Club {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration = new Date();
+
+	@OneToMany(mappedBy = "club", fetch = FetchType.LAZY)
+	private List<UploadedFile> uploadedFiles;
 
 	public Long getId() {
 		return id;
@@ -130,6 +135,14 @@ public class Club {
 
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
+	}
+
+	public List<UploadedFile> getUploadedFiles() {
+		return uploadedFiles;
+	}
+
+	public void setUploadedFiles(List<UploadedFile> uploadedFiles) {
+		this.uploadedFiles = uploadedFiles;
 	}
 
 }

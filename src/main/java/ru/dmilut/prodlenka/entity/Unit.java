@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -52,7 +54,11 @@ public class Unit {
 	@JoinTable(name = "users_units", joinColumns = { @JoinColumn(name = "units_id") }, inverseJoinColumns = { @JoinColumn(name = "users_id") })
 	private List<User> users;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfRegistration = new Date();
+
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY)
+	private List<UploadedFile> uploadedFiles;
 
 	@OneToMany(mappedBy = "unit")
 	private Set<Comment> comments;
@@ -135,6 +141,14 @@ public class Unit {
 
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<UploadedFile> getUploadedFiles() {
+		return uploadedFiles;
+	}
+
+	public void setUploadedFiles(List<UploadedFile> uploadedFiles) {
+		this.uploadedFiles = uploadedFiles;
 	}
 
 }

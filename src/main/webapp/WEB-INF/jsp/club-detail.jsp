@@ -3,7 +3,33 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-left">
+
+<div class="col-lg-9 col-md-9 col-sm-12 margBot slider-box pull-left">
+	<div class="search-content-box">
+		<h3 class="color1 pull-right">${club.name}</h3>
+		<p>${club.description}</p>
+
+<%-- 
+		<th>name</th>
+		<th>description</th>
+		<th>email</th>
+		<th>date Of Registration</th>
+		<th>Activity</th>
+
+		<td>${club.name}</td>
+		<p>${club.description}</p> --%>
+		<%-- <td>${user.email}</td>
+					<td>${user.dateOfRegistration}</td>
+					<td><c:forEach items="${user.units}" var="unit">
+							<tr>
+								<td>${unit.activity}</td>
+							</tr>
+						</c:forEach></td> --%>
+
+	</div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-12 book-form margBot pull-right">
 	<div class="box">
 		<h2>Booking</h2>
 		<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed
@@ -66,34 +92,4 @@
 		</form>
 	</div>
 </div>
-<div class="col-lg-9 col-md-9 col-sm-12 margBot pull-right slider-box">
-	<div class="search-content-box">
 
-		<table id="user-detail"
-			class="table table-bordered table-hover table-striped">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>description</th>
-					<th>email</th>
-					<th>date Of Registration</th>
-					<th>Activity</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>${club.name}</td>
-					<td>${club.description}</td>
-					<%-- <td>${user.email}</td>
-					<td>${user.dateOfRegistration}</td>
-					<td><c:forEach items="${user.units}" var="unit">
-							<tr>
-								<td>${unit.activity}</td>
-							</tr>
-						</c:forEach></td> --%>
-				</tr>
-			</tbody>
-		</table>
-
-	</div>
-</div>

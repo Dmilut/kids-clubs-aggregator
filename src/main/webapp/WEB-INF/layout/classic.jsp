@@ -58,7 +58,7 @@
 
 					<security:authorize access="isAuthenticated()">
 						<a class="${current == 'account' ? 'active' : ''}"
-							href="<spring:url value="/account.html" />">My account</a>
+							href="<spring:url value="/account.html" />">Мой профиль</a>
 						<a href="<spring:url value="/logout" />">Выход</a>
 					</security:authorize>
 				</div>
@@ -82,10 +82,10 @@
 							href="<spring:url value="/clubs.html" />">Клубы</a></li>
 
 						<li class="${current == 'parents' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">Родителям</a></li>
+							href="<spring:url value="/parents.html" />">Родителям</a></li>
 
 						<li class="${current == 'contacts' ? 'active' : ''}"><a
-							href="<spring:url value="/" />">О нас</a></li>
+							href="<spring:url value="/contacts.html" />">О нас</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -110,7 +110,8 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Регистрация на vneurokov.ru</h4>
+					<h4 class="modal-title" id="myModalLabel">Регистрация на
+						vneurokov.ru</h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -130,7 +131,8 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="email" class="col-sm-2 control-label">Эл. почта:</label>
+									<label for="email" class="col-sm-2 control-label">Эл.
+										почта:</label>
 									<div class="col-sm-10">
 										<form:input path="email" cssClass="form-control" />
 									</div>
@@ -165,7 +167,8 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Войти на vneurokov.ru</h4>
+					<h4 class="modal-title" id="myModalLabel">Войти на
+						vneurokov.ru</h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -197,8 +200,8 @@
 											Запомнить меня
 										</label>
 										<!-- <p class="help-block">(если эт)</p> -->
-									</div></button>
-									<a href="/forgot/" class="btn btn-default btn-block">Войти</a>
+									</div>
+									<button class="btn btn-default btn-block" type="submit">Войти</button>
 								</form>
 							</div>
 						</div>
@@ -207,15 +210,21 @@
 								Зарегистрируйся сейчас <span class="text-success">Бесплатно</span>
 							</p>
 							<ul class="list-unstyled" style="line-height: 2">
-								<li><span class="fa fa-check text-success"></span> Выставляй оценки</li>
-								<li><span class="fa fa-check text-success"></span> Подписывайся на рассылки</li>
-								<li><span class="fa fa-check text-success"></span> Узнавай расписание</li>
-								<li><span class="fa fa-check text-success"></span> Запоминай настройки</li>
-								<li><span class="fa fa-check text-success"></span> Получай подарки <small>(только для новых пользователей)</small></li>
+								<li><span class="fa fa-check text-success"></span>
+									Выставляй оценки</li>
+								<li><span class="fa fa-check text-success"></span>
+									Подписывайся на рассылки</li>
+								<li><span class="fa fa-check text-success"></span> Узнавай
+									расписание</li>
+								<li><span class="fa fa-check text-success"></span>
+									Запоминай настройки</li>
+								<li><span class="fa fa-check text-success"></span> Получай
+									подарки <small>(только для новых пользователей)</small></li>
 								<li><a href="/read-more/"><u>Узнать больше</u></a></li>
 							</ul>
 							<p>
-								<a href="/new-customer/" class="btn btn-info btn-block">Да, зарегистрироваться сейчас!</a>
+								<a href="/new-customer/" class="btn btn-info btn-block">Да,
+									зарегистрироваться сейчас!</a>
 							</p>
 						</div>
 					</div>

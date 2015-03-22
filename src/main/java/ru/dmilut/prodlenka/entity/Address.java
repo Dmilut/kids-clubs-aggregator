@@ -19,7 +19,7 @@ public class Address {
 	@Size(min = 2, max = 30)
 	private String city;
 
-	private String area;
+	private String district;
 
 	private String subwayStation;
 
@@ -56,12 +56,12 @@ public class Address {
 		this.city = city;
 	}
 
-	public String getArea() {
-		return area;
+	public String getDistrict() {
+		return district;
 	}
 
-	public void setArea(String area) {
-		this.area = area;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 	public String getSubwayStation() {

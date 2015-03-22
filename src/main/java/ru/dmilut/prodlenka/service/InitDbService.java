@@ -89,8 +89,10 @@ public class InitDbService {
 		Club club2 = new Club();
 		club1.setName("testClub1");
 		club1.setCompany(company1);
+		club1.setDescription("Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer sollicitudin imperdiet tempus. Nullam pellentesque, sem sed tempus eleifend, orci est pharetra dolor, at sollicitudin ");
 		club2.setName("testClub2");
 		club2.setCompany(company2);
+		club2.setDescription("Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer sollicitudin imperdiet tempus. Nullam pellentesque, sem sed tempus eleifend, orci est pharetra dolor, at sollicitudin ");
 
 		List<Unit> units1 = new ArrayList<Unit>();
 		List<Unit> units2 = new ArrayList<Unit>();
@@ -111,16 +113,18 @@ public class InitDbService {
 		club1.setUnits(units1);
 		club2.setUnits(units2);
 
-		
-
 		List<Address> addresses1 = new ArrayList<>();
 		List<Address> addresses2 = new ArrayList<>();
 		Address address1 = new Address();
-		address1.setCity("city1");
+		address1.setCity("Санкт-Петербург");
+		address1.setDistrict("Василеостровский");
+		address1.setSubwayStation("Приморская");
 		address1.setClub(club1);
 
 		Address address2 = new Address();
-		address2.setCity("city2");
+		address2.setCity("Москва");
+		address2.setDistrict("Невский");
+		address2.setSubwayStation("Маяковская");
 		address2.setClub(club2);
 
 		addresses1.add(address1);
