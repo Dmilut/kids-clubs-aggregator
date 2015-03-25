@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,8 @@ public class InitDbService {
 
 	@Autowired
 	private CompanyRepository companyRepository;
+
+	final static Logger logger = Logger.getLogger(InitDbService.class);
 
 	@PostConstruct
 	public void init() {
@@ -124,7 +127,7 @@ public class InitDbService {
 		Address address2 = new Address();
 		address2.setCity("Москва");
 		address2.setDistrict("Невский");
-		address2.setSubwayStation("Маяковская");
+		address2.setSubwayStation("Василеостровская");
 		address2.setClub(club2);
 
 		addresses1.add(address1);
