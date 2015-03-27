@@ -28,9 +28,7 @@ public class UserService {
 	private UnitRepository unitRepository;
 
 	public List<User> findAll() {
-
 		return userRepository.findAll();
-
 	}
 
 	public User findOne(long id) {
